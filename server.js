@@ -8,6 +8,9 @@ const PORT = process.env.PORT || 8080;
 // Requiring our models for syncing
 const db = require("./models");
 
+app.set("view engine", "pug");
+// app.set("views", path.join(__dirname, "views"));
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
