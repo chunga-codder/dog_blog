@@ -1,3 +1,14 @@
-app.get("/", (req, res) => {
-  res.render("pug", { title: "Hey", message: "Hello there!" });
-});
+const express = require('express');
+
+const router = express.Router();
+
+const db = require('../models');
+
+
+
+  router.get('/', (req, res) => {
+    res.render('pug')
+  });
+
+
+module.exports = router;
