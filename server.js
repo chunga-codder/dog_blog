@@ -1,5 +1,10 @@
 // Use Express
 const express = require("express");
+const session = require("express-session");
+
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
+
 const app = express(); // don't need to require pug (built into Express somehow?);
 // // Requiring our models for syncing
 const db = require("./models");
@@ -20,6 +25,12 @@ app.use("/", routes);
 
 // Static directory
 app.use(express.static("public"));
+
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "magic word", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: true }).then(() => {
