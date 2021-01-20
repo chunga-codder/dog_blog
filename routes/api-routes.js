@@ -32,7 +32,7 @@ router.get("/api/blog/user/:user", (req, res) => {
   });
 });
 
-router.post("/api/posts", (req, res) => {
+router.post("/api/blog", (req, res) => {
   db.Blog.create({
     username: req.body.username,
     title: req.body.title,
@@ -41,10 +41,18 @@ router.post("/api/posts", (req, res) => {
   }).then((dbBlog) => res.json(dbBlog));
 });
 
-router.delete("/api/posts/:id", (req, res) => {
+router.delete("/api/blog/:id", (req, res) => {
   db.Blog.destroy({
     where: {
       id: req.params.id,
+    },
+  }).then((dbBlog) => res.json(dbBlog));
+});
+
+router.patch("/api/blog", (req, res) => {
+  db.Blog.update({
+    where: {
+      id: req.body.id,
     },
   }).then((dbBlog) => res.json(dbBlog));
 });
