@@ -46,15 +46,18 @@ router.delete("/api/blog/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-  }).then((dbBlog) => res.json(dbBlog));
+  }).then(() => res.send("Successfully Deleted"));
 });
 
 router.patch("/api/blog", (req, res) => {
-  db.Blog.update({
-    where: {
-      id: req.body.id,
+  db.Blog.update(
+    {
+      body: req.body.body,
     },
-  }).then((dbBlog) => res.json(dbBlog));
+    {
+      where: { id: req.body.id },
+    }
+  ).then(() => res.send("Successfully Updated"));
 });
 
 module.exports = router;
