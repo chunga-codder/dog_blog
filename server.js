@@ -33,6 +33,6 @@ app.use(passport.session());
 
 
 // // Syncing our sequelize models and then starting our Express app
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen(PORT, () => console.log(`Listening at: http://localhost:${PORT}`));
 });
