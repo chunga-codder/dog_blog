@@ -6,10 +6,6 @@ const db = require("../models");
 
 const passport = require("../config/passport");
 
-router.get("/", (req, res) => {
-  res.render("pug");
-});
-
 router.get("/api/blog", (req, res) => {
   db.Blog.findAll({}).then((dbBlog) => res.json(dbBlog));
 });
