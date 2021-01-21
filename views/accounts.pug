@@ -2,9 +2,7 @@ doctype html
 html(lang='en')  
 head
     title Accounts Page
-    link(rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous")
+    link(rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css")
     
     link(rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
@@ -12,17 +10,22 @@ head
     
     link(rel='stylesheet', href='../public/stylesheets.style.css')
 body
-    nav.navbar navbar-default
+    nav(class="navbar navbar-default")
         div.container-fluid
             div.navbar-header
     div.container
         div.row
-            h2 Dog Blog Login
-            form.login
-                div.form-group
-                    label (for="exampleInputEmail1") Email Address
-                    input(type="email" class="form-control" id="password-input" placeholder="Password")
-                button (type="submit" class="btn btn-default") Login
-            br
-            p Sign Up a(href="/") here
-    script (type="text/javascript" src="../public/js/login.js")
+            div(class="col-md-6 col-md-offset-3")
+                h2 Dog Blog Login
+                form.login
+                    div.form-group
+                        label(for="exampleInputEmail1") Email Address
+                        input(type="email" class="form-control" id="email-input" placeholder="Email")
+                    div.form-group
+                        label(for="exampleInputPassword1") Password
+                        input(type="password" class="form-control" id="password-input" placeholder="Password")
+                    button(type="submit" class="btn btn-default") Login
+                br
+                p Or sign up 
+                    a(href="/") here
+    script(type="text/javascript" src="../public/js/login.js")
