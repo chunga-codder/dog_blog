@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("js accessed")
     // Getting references to our form and inputs
     const loginForm = $("form.login");
     const emailInput = $("input#email-input");
@@ -12,14 +11,12 @@ $(document).ready(function() {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
       };
-      console.log(userData)
       if (!userData.email || !userData.password) {
         return;
       }
   
       // If we have an email and password we run the loginUser function and clear the form
-      // loginUser(userData.email, userData.password);
-      console.log(userData.email + userData.password)
+      loginUser(userData.email, userData.password);
       emailInput.val("");
       passwordInput.val("");
     });
