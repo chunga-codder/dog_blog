@@ -7,25 +7,25 @@ var isAuthenticated = require("../config/middleware/authenticated");
 
 // Rendering home page on launch
 router.get("/", (req, res) => {
-    res.render("pug");
+  res.render("pug", {});
 });
 
 // Rendering sign-in page
-router.get("/signin", function(req, res) {
-// If the user already has an account send them to the members page
-if (req.user) {
+router.get("/signin", function (req, res) {
+  // If the user already has an account send them to the members page
+  if (req.user) {
     res.redirect("/members");
-}
-// res.sendFile(path.join(__dirname, "../public/signup.html"));
-res.render("accounts");
+  }
+  // res.sendFile(path.join(__dirname, "../public/signup.html"));
+  res.render("accounts");
 });
 
-router.get("/login", function(req, res) {
-// If the user already has an account send them to the members page
-    if (req.user) {
-        res.redirect("/members");
-    }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+router.get("/login", function (req, res) {
+  // If the user already has an account send them to the members page
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
 // // NOT DONE

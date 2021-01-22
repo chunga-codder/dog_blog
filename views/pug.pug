@@ -1,9 +1,20 @@
-doctype html  
-html(lang='en')  
- head
-   title Pug CHANGED!!!
- body
-   h1 Pug Examples
-   div.container
-     p Cool Pug example!
-     p #{name}'s Pug source code!
+extends navbar.pug
+block append head
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
+  block content
+
+body
+  div.container
+    .jumbotron.text-center Dog Blog
+      .container
+        .row
+          .col-md-12
+            .form-group
+              label(for='title') Dog Post
+
+
+
+
+block append foot
+  script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js")
+  
