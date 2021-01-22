@@ -1,0 +1,15 @@
+block blog
+.container
+    .jumbotron.text-center Dog Blog
+    .container
+      .row
+        .col-md-12
+          .form-group
+            label(for='title') Dog Post
+            input#title.form-control(placeholder='Post Title' type='text')
+            label(for='body') Body:
+            textarea#body.form-control(placeholder='Post Body' rows='10')
+            .form-group
+              label(for='category') Select Author:
+              select#author.custom-select
+            button.btn.btn-primary.submit(type='submit') Woof

@@ -7,7 +7,7 @@ var isAuthenticated = require("../config/middleware/authenticated");
 
 // Rendering home page on launch
 router.get("/", (req, res) => {
-  res.render("pug", {});
+  res.render("index", {});
 });
 
 // Rendering sign-in page
