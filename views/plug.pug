@@ -25,7 +25,11 @@ html
               a.nav-link(href='./blog.html') Blog
             li.nav-item
               a.nav-link(href='./parks.html') Parks
-
+            li.nav-item(style='display: none')
+              a.nav-link(href='/logout') Logout
+            li.nav-item(style='display: none')
+              a.nav-link(href='/signin') Login
+  
     block jumbotron
     .container
         .jumbotron.text-center Dog Blog
@@ -78,5 +82,7 @@ html
     //- block foot
     //-     #footer
     //-         p some footer content
+    block js
+    script(type="text/javascript" src="js/index.js")
 
 
