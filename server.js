@@ -20,8 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Import routes and give the server access to them.
-const routes = require("./routes/api-routes.js");
-app.use("/", routes);
+const apiRoutes = require("./routes/api-routes");
+const htmlRoutes = require("./routes/html-routes");
+app.use("/", htmlRoutes)
+app.use(apiRoutes);
 
 // Static directory
 app.use(express.static("public"));
