@@ -35,7 +35,13 @@ $(document).ready(() => {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
+    console.log(err)
+    if(err.responseJSON.errors[0].message = "accounts.email must be unique") {
+      $("#alert .msg").text(` ${err.responseJSON.errors[0].value} is already taken`);
+      $("#alert").fadeIn(500);
+    } else {
+      $("#alert .msg").text(` Unknown`);
+      $("#alert").fadeIn(500);
+    }; 
   }
 });
