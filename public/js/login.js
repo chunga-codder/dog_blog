@@ -28,10 +28,12 @@ $(document).ready(function() {
         password: password
       })
         .then(function() {
+          console.log("in login.js then")
           window.location.replace("/members");
           // If there's an error, log the error
         })
         .catch(function(err) {
+          console.log("in login.js error")
           console.log(err);
         });
     }
