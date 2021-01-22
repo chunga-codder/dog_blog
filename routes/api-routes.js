@@ -71,7 +71,6 @@ router.post("/api/login", passport.authenticate("local"), function(req, res) {
 // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
 // otherwise send back an error
 router.post("/api/signup", function(req, res) {
-  console.log("In api signup")
   db.Accounts.create({
     email: req.body.email,
     password: req.body.password
