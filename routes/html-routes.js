@@ -7,7 +7,7 @@ var authenticated = require("../config/middleware/authenticated");
 
 // Rendering home page on launch
 router.get("/", (req, res) => {
-  res.render("accounts");
+  res.render("index");
 });
 
 // Rendering sign-in page
@@ -17,7 +17,7 @@ router.get("/signin", function (req, res) {
     res.redirect("/members");
   }
   // res.sendFile(path.join(__dirname, "../public/signup.html"));
-  res.render("accounts");
+  res.render("2accounts");
 });
 
 router.get("/signup", function (req, res) {
