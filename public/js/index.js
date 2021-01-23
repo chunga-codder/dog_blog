@@ -1,19 +1,17 @@
 $(document).ready(function () {
+  console.log("index js");
 
-console.log('index js')
-
-function mainScreen() {
+  function mainScreen() {
     $("#parks-section").hide();
-}
+  }
 
-mainScreen();
+  mainScreen();
 
-$("#general-btn").on("click", function() {
+  $("#general-btn").on("click", function () {
     $("#parks-section").hide();
-})
+  });
 
-$("#parks-btn").on("click", function() {
+  $("#parks-btn").on("click", function () {
     $("#parks-section").show();
-})
-
+  });
 });
