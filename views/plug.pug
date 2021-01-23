@@ -2,11 +2,13 @@ html
   head
     title My Site - #{title}
     block head
+      link(rel="stylesheet", href='/stylesheets/style.css')
       link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
       script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous")  
-
+      script(src="https://polyfill.io/v3/polyfill.min.js?features=default")
+      script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3HjiS9yqJoirke_iTfk6hAOMScU3P6wE&callback=initMap&libraries=&v=weekly", defer)
 
 
   body
@@ -78,11 +80,26 @@ html
             label(for='category') Select Author:
             select#author.custom-select
             button.btn.btn-primary.submit(type='submit') Woof
+
+    block parks
+    .container
+      .jumbotron.text-center
+        h1 Park Finder 
+    .container
+      .input-group.mb-3
+        input.form-control(type='text' placeholder='ZIP code' aria-label="Recipient's username" aria-describedby='button-addon2')
+        button#button-addon2.btn.btn-outline-primary(type='button')
+          | Search
+    .container
+      div#map
+
     
     //- block foot
     //-     #footer
     //-         p some footer content
     block js
-    script(type="text/javascript" src="js/index.js")
+    script(type="text/javascript" src="/js/index.js")
+    script(type='text/javascript' src='/js/parks.js')
+    
 
 
