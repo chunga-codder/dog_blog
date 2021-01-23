@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
+const passport = require("./config/passport");
 
 const app = express(); // don't need to require pug (built into Express somehow?);
 // // Requiring our models for syncing
@@ -19,12 +19,6 @@ app.set("views", "./views");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Import routes and give the server access to them.
-const apiRoutes = require("./routes/api-routes");
-const htmlRoutes = require("./routes/html-routes");
-app.use("/", htmlRoutes)
-app.use(apiRoutes);
-
 // Static directory
 app.use(express.static("public"));
 
@@ -32,6 +26,12 @@ app.use(express.static("public"));
 app.use(session({ secret: "magic word", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Import routes and give the server access to them.
+const apiRoutes = require("./routes/api-routes");
+const htmlRoutes = require("./routes/html-routes");
+app.use("/", htmlRoutes)
+app.use(apiRoutes);
 
 
 // // Syncing our sequelize models and then starting our Express app
