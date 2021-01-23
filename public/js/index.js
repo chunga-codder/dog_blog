@@ -1,3 +1,5 @@
+// Handle page rendering based on category of blog selected
+
 $(document).ready(function () {
   console.log("index js");
 
@@ -16,6 +18,8 @@ $(document).ready(function () {
   });
 });
 
+
+// Create Post
 document.addEventListener("DOMContentLoaded", (e) => {
   console.log("DOM loaded! 🚀");
 
@@ -70,6 +74,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
   formBtn.addEventListener("click", newRow);
 });
 
+// See Posts
+
 let posts;
 
 const getPost = () => {
@@ -89,24 +95,26 @@ const getPost = () => {
 
 getPost();
 
+
+// Create rows to see each blog post/category
 const newRow = (post) => {
   const blogContainer = document.querySelector("#blog-container");
 
   const newCard = document.createElement("div");
   newCard.classList.add("card");
+  blogContainer.append(newCard);
 
   const newBody = document.createElement("div");
   newBody.classList.add("card-body");
+  blogContainer.append(newBody);
 
   const newTitle = document.createElement("h5");
-  newTitle.classList.add("card-header");
+  newTitle.classList.add("card-title");
   newTitle.textContent = "test";
+  blogContainer.append(newTitle);
 
   const newText = document.createElement("p");
   newText.classList.add("card-text");
   newText.textContent = "text-test";
-
-  blogContainer.append(newRow);
-
-  console.log("hello");
+  blogContainer.append(newText); 
 };
