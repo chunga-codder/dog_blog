@@ -31,10 +31,10 @@ $(document).ready(() => {
         window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
-      .catch(handleLoginErr);
+      .catch(handleSignupErr);
   }
 
-  function handleLoginErr(err) {
+  function handleSignupErr(err) {
     console.log(err)
     if(err.responseJSON.errors[0].message = "accounts.email must be unique") {
       $("#alert .msg").text(` ${err.responseJSON.errors[0].value} is already taken`);

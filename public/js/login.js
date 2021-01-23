@@ -32,10 +32,13 @@ $(document).ready(() => {
           window.location.replace("/members");
           // If there's an error, log the error
         })
-        .catch(function(err) {
-          console.log("in login.js error")
-          console.log(err);
-        });
+        .catch(handleLoginErr);
+    }
+
+    function handleLoginErr(err) {
+      console.log(err)
+        $("#alert .msg").text(` Login information was incorrect`);
+        $("#alert").fadeIn(500);
     }
   });
   
