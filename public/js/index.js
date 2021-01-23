@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     const newPost = {
       //   username: usernameInput.value.trim(),
-      title: titleInput.value.trin(),
+      title: titleInput.value.trim(),
       body: bodyInput.value.trim(),
       // category: postCategorySelect.value,
     };
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     })
       .then((response) => response.json())
       .then((res) => {
-        console.log("Success");
+        console.log("Success", res);
         location.reload();
         console.log(post);
       })
@@ -65,6 +65,48 @@ document.addEventListener("DOMContentLoaded", (e) => {
   };
 
   const formBtn = document.querySelector("#form-btn");
+  const blogContainer = document.querySelector("#blog-container");
 
-  formBtn.addEventListener("click", createPost);
+  formBtn.addEventListener("click", newRow);
 });
+
+let posts;
+
+const getPost = () => {
+  fetch("/api/blog", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success in getting posts:", data);
+      posts = data;
+    });
+  console.log(posts);
+};
+
+getPost();
+
+const newRow = (post) => {
+  const blogContainer = document.querySelector("#blog-container");
+
+  const newCard = document.createElement("div");
+  newCard.classList.add("card");
+
+  const newBody = document.createElement("div");
+  newBody.classList.add("card-body");
+
+  const newTitle = document.createElement("h5");
+  newTitle.classList.add("card-header");
+  newTitle.textContent = "test";
+
+  const newText = document.createElement("p");
+  newText.classList.add("card-text");
+  newText.textContent = "text-test";
+
+  blogContainer.append(newRow);
+
+  console.log("hello");
+};
