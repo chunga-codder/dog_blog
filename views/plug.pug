@@ -49,7 +49,7 @@ html
               p.card-text
                 |Some quick example text to build on the card title and make up
                 |the bulk of the card&apos;s content.
-              a.btn.btn-primary(href='#') Go somewhere
+              a.btn.btn-primary#general-btn(href='#') General
         .col-md-4
           .card(style='width: 18rem')
             img.card-img-top(src='...', alt='...')
@@ -58,7 +58,7 @@ html
               p.card-text
                 |Some quick example text to build on the card title and make up
                 |the bulk of the card&apos;s content.
-              a.btn.btn-primary(href='#') Go somewhere   
+              a.btn.btn-primary#parks-btn(href='#') Parks   
         .col-md-4
           .card(style='width: 18rem')
             img.card-img-top(src='...', alt='...')
@@ -67,7 +67,7 @@ html
               p.card-text
                 |Some quick example text to build on the card title and make up
                 |the bulk of the card&apos;s content.
-              a.btn.btn-primary(href='#') Go somewhere
+              a.btn.btn-primary(href='#') Lost and Found
     
     block form   
     .container
@@ -84,22 +84,25 @@ html
             button.btn.btn-primary.submit(type='submit') Woof
 
     block parks
-    .container
-      .jumbotron.text-center
-        h1 Park Finder 
-    .container
-      .input-group.mb-3
-        input.form-control(type='text' placeholder='ZIP code' aria-label="Recipient's username" aria-describedby='button-addon2')
-        button#button-addon2.btn.btn-outline-primary(type='button')
-          | Search
-    .container
-      div#map
+    .container#parks-section
+      .container
+        .jumbotron.text-center
+          h1 Park Finder 
+      .container
+        .input-group.mb-3
+          input.form-control(type='text' placeholder='ZIP code' aria-label="Recipient's username" aria-describedby='button-addon2')
+          button#button-addon2.btn.btn-outline-primary(type='button')
+            | Search
+      .container
+        div#map
 
     
     //- block foot
     //-     #footer
     //-         p some footer content
+
     block js
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(type="text/javascript" src="/js/index.js")
     script(type='text/javascript' src='/js/parks.js')
     
