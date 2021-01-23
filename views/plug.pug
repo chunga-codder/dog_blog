@@ -68,20 +68,29 @@ html
                 |Some quick example text to build on the card title and make up
                 |the bulk of the card&apos;s content.
               a.btn.btn-primary(href='#') Lost and Found
-    
+
+    block blog
+    .container
+      .row
+        .col-md-12
+          .card
+            .card-body
+            h5.card-title#titleVal #{title}
+            //- h6.card-subtitle.mb-2.text-muted#usernameInput #{username}
+            p.card-text#bodyVal
+              |#{body}
+
     block form   
     .container
       .row
         .col-md-12
           .form-group
             label(for='title') Dog Post
-            input#title.form-control(placeholder='Post Title' type='text')
+            input#titleInput.form-control(placeholder='Post Title' type='text')
             label(for='body') Body:
-            textarea#body.form-control(placeholder='Post Body' rows='10')
-          .form-group
-            label(for='category') Select Author:
-            select#author.custom-select
-            button.btn.btn-primary.submit(type='submit') Woof
+            textarea#bodyInput.form-control(placeholder='Post Body' rows='10')            
+            button.btn.btn-primary.submit#form-btn(type='submit') Woof
+
 
     block parks
     .container#parks-section
