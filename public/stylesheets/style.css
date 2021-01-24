@@ -2,3 +2,29 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+#map {
+  height: 500px;
+}
+
+
+#blog-container {
+  margin-top: 15px;
+  border: 1px solid red;
+}
+
+.blog-card {
+  border: 1px solid green;
+}
+
+.blog-card-body {
+  border: 1px solid blue;
+}
+
+.blog-card-header {
+  border: 1px solid purple;
+}
+
+.blog-card-text {
+  border: 1px solid orange;
+}
