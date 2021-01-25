@@ -7,7 +7,6 @@ form.login {
   height: 500px;
 }
 
-
 #blog-container {
   margin-top: 15px;
   border: 1px solid red;
@@ -27,4 +26,8 @@ form.login {
 
 .blog-card-text {
   border: 1px solid orange;
+}
+
+.card {
+  margin-top: 1rem;
 }
