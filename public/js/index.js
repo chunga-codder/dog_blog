@@ -9,10 +9,14 @@ $(document).ready(function () {
 
   $("#general-btn").on("click", function () {
     $("#parks-section").hide();
+    $("#blog-container").show();
+    $("#form-container").show();
   });
 
   $("#parks-btn").on("click", function () {
     $("#parks-section").show();
+    $("#blog-container").hide();
+    $("#form-container").hide();
   });
 });
 
@@ -76,7 +80,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       usernameInput = "noUserName";
     }
     submitPost(newRow);
-    // getPost();
+    getPost();
   });
 });
 
@@ -84,25 +88,25 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 let posts;
 
-// const getPost = (blogPost) => {
-//   fetch("/api/blog", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log("Success in getting posts:", data);
-//       posts = data;
-//       for (let i = 0; i < posts.length; i++) {
-//         newRow(posts);
-//         console.log(posts[i]);
-//       }
-//     });
-// };
+const getPost = (blogPost) => {
+  fetch("/api/blog", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success in getting posts:", data);
+      posts = data;
+      for (let i = 0; i < posts.length; i++) {
+        newRow(posts);
+        console.log(posts[i]);
+      }
+    });
+};
 
-// getPost();
+getPost();
 
 // Create rows to see each blog post/category
 const newRow = (data) => {
@@ -140,4 +144,6 @@ const newRow = (data) => {
   delButton.classList.add("btn", "btn-primary");
   delButton.textContent = "Delete Post";
   newBody.append(delButton);
+  newCard.setAttribute("data-post", JSON.stringify(data));
+  return newCard;
 };
