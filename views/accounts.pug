@@ -1,53 +1,59 @@
-doctype html  
-html(lang='en')  
-head
-    title Accounts Page
-    
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
-    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+doctype html
+head(lang='en')
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title Accounts Page
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
+  link(rel='stylesheet', href='stylesheets/style.css', type='text/css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css', integrity='sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==', crossorigin='anonymous')
+//- Start of the Navbar
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.justify-content-left
+  div.container-fluid
+    a.navbar-brand(href='#') Dog Blog
+    button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+    div#navbarNavDropdown.collapse.navbar-collapse
+        ul.navbar-nav
+            li.nav-item
+                a.nav-link.active(aria-current='page', href='./index.html') Home
+            li.nav-item
+                a.nav-link(href='./blog.html') Blog
+            li.nav-item
+                a.nav-link(href='./parks.html') Parks
+            li.nav-item.hide#navLogout
+                a.nav-link(href='/logout') Logout
+            li.nav-item.hide#navLogin
+                a.nav-link(href='/signin') Login
+//- End Nav
+//- Start of Content Container
+#page-content
+  .p-5.container.top-buffer.mh-100.justify-content-center.align-items-center
+    div.row.justify-content-center.align-items-center
+        div(class="col-md-6 col-md-offset-3")
+            h2 Login
+            form.login.center
+                div.form-group
+                    label(for="exampleInputEmail1") Email Address
+                    input(type="email" class="form-control" id="email-input" placeholder="Email")
+                div.form-group
+                    label(for="exampleInputPassword1") Password
+                    input(type="password" class="form-control" id="password-input" placeholder="Password")
+                div(style="display: none" id="alert" class="alert alert-danger" role="alert")
+                    span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
+                    span() Error:
+                        span(class="msg")
+                button(type="submit" class="btn btn-default") Login
+            br
+            p Or sign up 
+                a(href="/signup") here
+//- Start of Footer
+footer#sticky-footer.py-4.bg-dark.text-white
+  .container.text-center
+    small Copyright &copy; 2020
+//- End of Footer
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous")
-    link(rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-        crossorigin="anonymous")
-    
-    link(rel='stylesheet', href="stylesheets/style.css")
-body
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      .container-fluid
-        a.navbar-brand(href='#') Dog Blog
-        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        #navbarNavDropdown.collapse.navbar-collapse
-          ul.navbar-nav
-            li.nav-item
-              a.nav-link.active(aria-current='page', href='./index.html') Home
-            li.nav-item
-              a.nav-link(href='./blog.html') Blog
-            li.nav-item
-              a.nav-link(href='./parks.html') Parks
-            li.nav-item(style='display: none')
-              a.nav-link(href='/logout') Logout
-            li.nav-item(style='display: none')
-              a.nav-link(href='/signin') Login
-    div.container
-        div.row
-            div(class="col-md-6 col-md-offset-3")
-                h2 Login
-                form.login
-                    div.form-group
-                        label(for="exampleInputEmail1") Email Address
-                        input(type="email" class="form-control" id="email-input" placeholder="Email")
-                    div.form-group
-                        label(for="exampleInputPassword1") Password
-                        input(type="password" class="form-control" id="password-input" placeholder="Password")
-                    div(style="display: none" id="alert" class="alert alert-danger" role="alert")
-                        span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
-                        span() Error:
-                            span(class="msg")
-                    button(type="submit" class="btn btn-default") Login
-                br
-                p Or sign up 
-                    a(href="/signup") here
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-    script(type="text/javascript" src="js/login.js")
+script(type="text/javascript" src="js/index.js")
+script(type="text/javascript" src="js/login.js")
