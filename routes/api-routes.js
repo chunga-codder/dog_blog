@@ -64,7 +64,6 @@ router.patch("/api/blog", (req, res) => {
 // Otherwise the blog posts will not have a user id associated with it.
 router.post("/api/login", passport.authenticate("local"), function(req, res) {
   res.json(req.user);
-  console.log(req.user);
 });
 
 // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
