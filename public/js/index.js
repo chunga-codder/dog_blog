@@ -24,27 +24,27 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const titleInput = document.getElementById("titleInput");
   const bodyInput = document.getElementById("bodyInput");
 
-  // const createPost = (e) => {
-  //   e.preventDefault();
-  //   if (!titleInput.value || !bodyInput.value) {
-  //     alert("Your post is missing some content");
-  //   }
+  const createPost = (e) => {
+    e.preventDefault();
+    if (!titleInput.value || !bodyInput.value) {
+      alert("Your post is missing some content");
+    }
 
-  // const newPost = {
-  //   //   username: usernameInput.value.trim(),
-  //   title: titleInput.value.trim(),
-  //   body: bodyInput.value.trim(),
-  //   // category: postCategorySelect.value,
-  // };
-  // console.log("createPost -> newPost", newPost);
-  // // Check if the user is updating or creating and preform said function
-  // //   if (updating) {
-  // //     newPost.id = postId;
-  // //     updatePost(newPost);
-  // //   } else {
-  // submitPost(newPost);
-  // //   }
-  // };
+    const newPost = {
+      //   username: usernameInput.value.trim(),
+      title: titleInput.value.trim(),
+      body: bodyInput.value.trim(),
+      // category: postCategorySelect.value,
+    };
+    console.log("createPost -> newPost", newPost);
+    // Check if the user is updating or creating and preform said function
+    //   if (updating) {
+    //     newPost.id = postId;
+    //     updatePost(newPost);
+    //   } else {
+    submitPost(newPost);
+    //   }
+  };
 
   const submitPost = (blogPost) => {
     fetch("/api/blog", {
@@ -75,12 +75,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
     if (!usernameInput) {
       usernameInput = "noUserName";
     }
-    submitPost({
-      username: usernameInput,
-      title: titleInput.value,
-      body: bodyInput.value,
-    });
-    getPost();
+    submitPost(newRow);
+    // getPost();
   });
 });
 
@@ -88,27 +84,25 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 let posts;
 
-const getPost = () => {
-  fetch("/api/blog", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success in getting posts:", data);
-      posts = data;
-      for (let i = 0; i < posts.length; i++) {
-        newRow({
-          newTitle: posts.title,
-        });
-        console.log(posts[i]);
-      }
-    });
-};
+// const getPost = (blogPost) => {
+//   fetch("/api/blog", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log("Success in getting posts:", data);
+//       posts = data;
+//       for (let i = 0; i < posts.length; i++) {
+//         newRow(posts);
+//         console.log(posts[i]);
+//       }
+//     });
+// };
 
-getPost();
+// getPost();
 
 // Create rows to see each blog post/category
 const newRow = (data) => {
@@ -128,12 +122,13 @@ const newRow = (data) => {
 
   const newTitle = document.createElement("h5");
   newTitle.classList.add("card-title");
-  newTitle.textContent = "";
+  newTitle.textContent = titleInput.value;
+  console.log(titleInput.value);
   newBody.append(newTitle);
 
   const newText = document.createElement("p");
   newText.classList.add("card-text");
-  newText.textContent = "text-test";
+  newText.textContent = bodyInput.value;
   newBody.append(newText);
 
   const editButton = document.createElement("a");
