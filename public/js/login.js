@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function() {
     // Getting references to our form and inputs
     const loginForm = $("form.login");
     const emailInput = $("input#email-input");
@@ -28,10 +28,10 @@ $(document).ready(() => {
         password: password
       })
         .then(function() {
-          console.log("in login.js then")
           window.location.replace("/members");
           // If there's an error, log the error
         })
+     main
         .catch(handleLoginErr);
     }
 
@@ -39,6 +39,11 @@ $(document).ready(() => {
       console.log(err)
         $("#alert .msg").text(` Login information was incorrect`);
         $("#alert").fadeIn(500);
+
+        .catch(function(err) {
+          console.log(err);
+        });
+   main
     }
   });
   

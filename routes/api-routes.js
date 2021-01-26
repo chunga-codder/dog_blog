@@ -30,8 +30,8 @@ router.get("/api/blog/user/:user", (req, res) => {
   });
 });
 
-router.post("/api/blog", (req, res) => {
-  db.Blog.create({
+router.post("/api/blog", async (req, res) => {
+  await db.Blog.create({
     username: req.body.username,
     title: req.body.title,
     body: req.body.body,
@@ -62,7 +62,7 @@ router.patch("/api/blog", (req, res) => {
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page, leave them logged in, and every blog post or any post should have their user id associated with it.
 // Otherwise the blog posts will not have a user id associated with it.
-router.post("/api/login", passport.authenticate("local"), function(req, res) {
+router.post("/api/login", passport.authenticate("local"), function (req, res) {
   res.json(req.user);
   console.log(req.user);
 });
@@ -70,36 +70,36 @@ router.post("/api/login", passport.authenticate("local"), function(req, res) {
 // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
 // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
 // otherwise send back an error
-router.post("/api/signup", function(req, res) {
+router.post("/api/signup", function (req, res) {
   db.Accounts.create({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
   })
-    .then(function() {
+    .then(function () {
       res.redirect(307, "/api/login");
     })
-    .catch(function(err) {
+    .catch(function (err) {
       res.status(401).json(err);
     });
 });
 
 // Route for logging user out
-router.get("/logout", function(req, res) {
+router.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
 });
 
 // Route for getting some data about our user to be used client side
-router.get("/api/user_data", function(req, res) {
+router.get("/api/user_data", function (req, res) {
   if (!req.user) {
     // The user is not logged in, send back an empty object
-    res.json({status: "not logged in"});
+    res.json({ status: "not logged in" });
   } else {
     // Otherwise send back the user's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
     });
   }
 });

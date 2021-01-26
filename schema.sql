@@ -1,3 +1,0 @@
-DROP DATABASE IF EXISTS dogdb;
-CREATE DATABASE dogdb;
-USE dogdb;

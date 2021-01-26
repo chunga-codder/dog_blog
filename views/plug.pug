@@ -2,11 +2,14 @@ html
   head
     title My Site - #{title}
     block head
+      link(rel="stylesheet", href='/stylesheets/style.css')
       link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
+      link(rel="stylesheet", href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous")
       script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous")  
-
+      script(src="https://polyfill.io/v3/polyfill.min.js?features=default")
+      script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3HjiS9yqJoirke_iTfk6hAOMScU3P6wE&callback=initMap&libraries=&v=weekly", defer)
 
 
   body
@@ -32,57 +35,90 @@ html
   
     block jumbotron
     .container
-        .jumbotron.text-center Dog Blog
+        .jumbotron.text-center 
+          h1 Dog Blog
+            h2 Select Blog Categories Below
+            a.btn.btn-primary#general-btn(href='#') General
+              i.fas.fa-dog
+            a.btn.btn-primary#parks-btn(href='#') Parks
+              i.fas.fa-paw  
 
-    block home
+    //- block home
+    //- .container
+    //-   .row
+    //-     .col-md-4
+    //-       .card(style='width: 18rem')
+    //-         img.card-img-top(src='...', alt='...')
+    //-         .card-body
+    //-           h5.card-title General
+    //-           p.card-text
+    //-             |Some quick example text to build on the card title and make up
+    //-             |the bulk of the card&apos;s content.
+    //-           a.btn.btn-primary#general-btn(href='#') General
+    //-     .col-md-4
+    //-       .card(style='width: 18rem')
+    //-         img.card-img-top(src='...', alt='...')
+    //-         .card-body
+    //-           h5.card-title Parks
+    //-           p.card-text
+    //-             |Some quick example text to build on the card title and make up
+    //-             |the bulk of the card&apos;s content.
+    //-           a.btn.btn-primary#parks-btn(href='#') Parks   
+    //-     .col-md-4
+    //-       .card(style='width: 18rem')
+    //-         img.card-img-top(src='...', alt='...')
+    //-         .card-body
+    //-           h5.card-title Lost And Found
+    //-           p.card-text
+    //-             |Some quick example text to build on the card title and make up
+    //-             |the bulk of the card&apos;s content.
+    //-           a.btn.btn-primary(href='#') Lost and Found
+
+    block blog
     .container
-      .row
-        .col-md-4
-          .card(style='width: 18rem')
-            img.card-img-top(src='...', alt='...')
-            .card-body
-              h5.card-title Blog
-              p.card-text
-                |Some quick example text to build on the card title and make up
-                |the bulk of the card&apos;s content.
-              a.btn.btn-primary(href='#') Go somewhere
-        .col-md-4
-          .card(style='width: 18rem')
-            img.card-img-top(src='...', alt='...')
-            .card-body
-              h5.card-title Parks
-              p.card-text
-                |Some quick example text to build on the card title and make up
-                |the bulk of the card&apos;s content.
-              a.btn.btn-primary(href='#') Go somewhere   
-        .col-md-4
-          .card(style='width: 18rem')
-            img.card-img-top(src='...', alt='...')
-            .card-body
-              h5.card-title Lost And Found
-              p.card-text
-                |Some quick example text to build on the card title and make up
-                |the bulk of the card&apos;s content.
-              a.btn.btn-primary(href='#') Go somewhere
-    
+      .row#blog-container
+      //-   .col-md-4
+      //-     .card
+      //-       .card-body
+      //-       h5.card-title#titleVal #{title}
+      //-       //- h6.card-subtitle.mb-2.text-muted#usernameInput #{username}
+      //-       p.card-text#bodyVal
+      //-         |#{body}
+
     block form   
-    .container
+    .container#form-container
       .row
         .col-md-12
           .form-group
             label(for='title') Dog Post
-            input#title.form-control(placeholder='Post Title' type='text')
+            input#titleInput.form-control(placeholder='Post Title' type='text')
             label(for='body') Body:
-            textarea#body.form-control(placeholder='Post Body' rows='10')
-          .form-group
-            label(for='category') Select Author:
-            select#author.custom-select
-            button.btn.btn-primary.submit(type='submit') Woof
+            textarea#bodyInput.form-control(placeholder='Post Body' rows='10')            
+            button.btn.btn-primary.submit#form-btn(type='submit') Woof
+
+
+    block parks
+    .container#parks-section
+      .container
+        .jumbotron.text-center
+          h1 Park Finder 
+      .container
+        .input-group.mb-3
+          input.form-control(type='text' placeholder='ZIP code' aria-label="Recipient's username" aria-describedby='button-addon2')
+          button#button-addon2.btn.btn-outline-primary(type='button')
+            | Search
+      .container
+        div#map
+
     
     //- block foot
     //-     #footer
     //-         p some footer content
+
     block js
-    script(type="text/javascript" src="js/index.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(type="text/javascript" src="/js/index.js")
+    script(type='text/javascript' src='/js/parks.js')
+    
 
 
