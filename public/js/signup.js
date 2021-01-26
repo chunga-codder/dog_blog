@@ -27,6 +27,22 @@ $(document).ready(() => {
         email: email,
         password: password
       })
+ main
+      .catch(handleSignupErr);
+  }
+
+  function handleSignupErr(err) {
+    console.log(err)
+    if(err.responseJSON.errors[0].message = "accounts.email must be unique") {
+      $("#alert .msg").text(` ${err.responseJSON.errors[0].value} is already taken`);
+      $("#alert").fadeIn(500);
+    } else {
+      $("#alert .msg").text(` Unknown`);
+      $("#alert").fadeIn(500);
+    }; 
+  }
+});
+
         .then(function(data) {
           window.location.replace("/members");
           // If there's an error, handle it by throwing up a bootstrap alert
@@ -45,3 +61,4 @@ $(document).ready(() => {
       }; 
     }
   });
+main
