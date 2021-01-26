@@ -30,8 +30,8 @@ router.get("/api/blog/user/:user", (req, res) => {
   });
 });
 
-router.post("/api/blog", (req, res) => {
-  db.Blog.create({
+router.post("/api/blog", async (req, res) => {
+  await db.Blog.create({
     username: req.body.username,
     title: req.body.title,
     body: req.body.body,
