@@ -10,6 +10,15 @@ router.get("/api/blog", (req, res) => {
   db.Blog.findAll({}).then((dbBlog) => res.json(dbBlog));
 });
 
+// Get route for retrieving a single post
+router.get('/api/blog/:id', (req, res) => {
+  db.Blog.findOne({
+    where: {
+      id: req.params.id,
+    },
+  }).then((dbPost) => res.json(dbPost));
+});
+
 router.get("/api/blog/category/:category", (req, res) => {
   db.Blog.findAll({
     where: {
@@ -23,22 +32,23 @@ router.get("/api/blog/category/:category", (req, res) => {
 router.get("/api/blog/user/:user", (req, res) => {
   db.Blog.findAll({
     where: {
-      category: req.params.user,
+      username: req.params.user,
     },
   }).then((dbBlog) => {
     res.json(dbBlog);
   });
 });
 
-router.post("/api/blog", async (req, res) => {
-  await db.Blog.create({
-    username: req.body.username,
-    title: req.body.title,
-    body: req.body.body,
-    category: req.body.category,
-  }).then((dbBlog) => res.json(dbBlog));
+// PUT route for updating posts
+router.put('/api/blog', (req, res) => {
+  db.Blog.update(req.body, {
+    where: {
+      id: req.body.id,
+    },
+  }).then((dbPost) => res.json(dbPost));
 });
 
+// route to delete posts
 router.delete("/api/blog/:id", (req, res) => {
   db.Blog.destroy({
     where: {
