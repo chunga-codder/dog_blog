@@ -25,7 +25,7 @@ $('#navLogin').on('click', () => {
   $("#general-btn").on("click", function () {
     $("#parks-section").hide();
     $("#blog-container").show();
-    $("#form-container").show();
+    $("#form-container").hide();
   });
 
   $("#parks-btn").on("click", function () {
@@ -128,7 +128,7 @@ const newRow = (data) => {
   const blogContainer = document.querySelector("#blog-container");
 
   const newCardSize = document.createElement("div");
-  newCardSize.classList.add("col-md-4");
+  newCardSize.classList.add("col-md-12");
   blogContainer.append(newCardSize);
 
   const newCard = document.createElement("div");
