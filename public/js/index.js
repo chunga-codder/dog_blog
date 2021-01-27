@@ -136,14 +136,12 @@ const newRow = (data) => {
   newBody.append(newText);
 
   const editButton = document.createElement("a");
-  editButton.classList.add("btn", "btn-primary");
+  editButton.classList.add("edit", "btn", "btn-primary");
   editButton.textContent = "Edit Post";
   newBody.append(editButton);
 
   const delButton = document.createElement("a");
-  delButton.classList.add("btn", "btn-primary");
+  delButton.classList.add("delete", "btn", "btn-primary");
   delButton.textContent = "Delete Post";
   newBody.append(delButton);
-  newCard.setAttribute("data-post", JSON.stringify(data));
-  return newCard;
 };
