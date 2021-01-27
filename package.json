@@ -1,21 +1,8 @@
 {
   "name": "dog_blog",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Frank-5850/dog_blog.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Frank-5850/dog_blog/issues"
-  },
-  "homepage": "https://github.com/Frank-5850/dog_blog#readme",
+  "description": "",
+  "main": "server.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
@@ -27,6 +14,19 @@
     "sequelize": "^6.4.0"
   },
   "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geoffreyjiang/dog_blog.git"
+  },
   "keywords": [],
-  "description": ""
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geoffreyjiang/dog_blog/issues"
+  },
+  "homepage": "https://github.com/geoffreyjiang/dog_blog#readme"
 }

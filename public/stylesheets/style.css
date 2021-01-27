@@ -3,6 +3,35 @@ form.login {
   margin-top: 50px;
 }
 
+#map {
+  height: 500px;
+  margin-bottom: 25px;
+}
+
 .hide {
   display: none;
+}
+
+.button-addon2 {
+  width: 150px;
+}
+
+#blog-container {
+  margin-top: 15px;
+}
+
+.card {
+  margin-top: 1rem;
+}
+
+#general-btn {
+  margin-right: 1rem;
+}
+
+.btn-primary {
+  margin-top: 1rem;
+}
+
+.edit {
+  margin-right: 1rem;
 }

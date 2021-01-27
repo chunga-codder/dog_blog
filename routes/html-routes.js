@@ -10,7 +10,11 @@ const db = require("../models");
 
 // Rendering home page on launch
 router.get("/", (req, res) => {
+  //  main
   res.render("index");
+
+  res.render("index", {});
+  //  main
 });
 
 // Rendering home page on launch
