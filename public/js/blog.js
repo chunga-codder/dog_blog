@@ -22,14 +22,19 @@ $(document).ready(() => {
         } else if(!newPost.body) {
             $("#alert .msg").text(` Body can't be blank`);
             $("#alert").fadeIn(500);
-        } else if(!newPost.category) {
+        } else if(!newPost.username) {
             $("#alert .msg").text(` Username can't be blank`);
             $("#alert").fadeIn(500);
         } else if(!newPost.category) {
             $("#alert .msg").text(` Category can't be blank`);
             $("#alert").fadeIn(500);
         } else {
+            $("#alert").addClass("hide")
             recordPost(newPost)
+            title[0].value = "";
+            body[0].value = "";
+            username[0].value = "";
+            category[0].value = "";
         }
     });
 
@@ -42,8 +47,9 @@ $(document).ready(() => {
             category: post.category
         }).then(() => {
             $("#alertDone").fadeIn(500);
+
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
         })
     }
 }); 
