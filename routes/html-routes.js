@@ -13,6 +13,12 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+// Rendering home page on launch
+router.get("/blog", (req, res) => {
+  res.render("2blog");
+});
+
+
 // Rendering sign-in page
 router.get("/signin", function (req, res) {
   // If the user already has an account send them to the members page
@@ -33,15 +39,7 @@ router.get("/signup", function (req, res) {
 // Here we've add our authenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get("/members", authenticated, function(req, res) {
-  const currentUser = req.user
-  // db.Blog.selectAll((data) => {
-  //   const blogsObject = {
-  //     blog: data,
-  //   };
-  //   res.render('members', blogsObject, currentUser);
-  // });
   res.render('members')
-  console.log(req.user)
 });
 
 module.exports = router;

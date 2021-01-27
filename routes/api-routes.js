@@ -66,9 +66,7 @@ router.post("/api/login", passport.authenticate("local"), function(req, res) {
   res.json(req.user);
 });
 
-// Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-// how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-// otherwise send back an error
+// Route for signing up a user. The user's password is automatically hashed and stored securely thanks to how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in, otherwise send back an error.
 router.post("/api/signup", function(req, res) {
   db.Accounts.create({
     email: req.body.email,
@@ -101,6 +99,16 @@ router.get("/api/user_data", function(req, res) {
       id: req.user.id
     });
   }
+});
+
+// Practice for blog posts
+router.post("/api/blog1", (req, res) => {
+  db.Blog.create({
+    username: req.body.username,
+    title: req.body.title,
+    body: req.body.body,
+    category: req.body.category,
+  }).then((dbBlog) => res.json(dbBlog));
 });
 
 module.exports = router;
