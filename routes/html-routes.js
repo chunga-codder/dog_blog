@@ -7,11 +7,11 @@ var authenticated = require("../config/middleware/authenticated");
 
 // Rendering home page on launch
 router.get("/", (req, res) => {
- main
+  //  main
   res.render("index");
 
   res.render("index", {});
- main
+  //  main
 });
 
 // Rendering sign-in page
@@ -34,7 +34,7 @@ router.get("/signup", function (req, res) {
 
 // Here we've add our authenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
-router.get("/members", authenticated, function(req, res) {
+router.get("/members", authenticated, function (req, res) {
   res.render("members");
 });
 
