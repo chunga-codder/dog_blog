@@ -23,16 +23,17 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "magic word", resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: "magic word", resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Import routes and give the server access to them.
 const apiRoutes = require("./routes/api-routes");
 const htmlRoutes = require("./routes/html-routes");
-app.use("/", htmlRoutes)
+app.use("/", htmlRoutes);
 app.use(apiRoutes);
-
 
 // // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync().then(() => {
