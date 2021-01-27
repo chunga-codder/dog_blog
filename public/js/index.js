@@ -152,11 +152,30 @@ const newRow = (data) => {
     const editButton = document.createElement("a");
     editButton.classList.add("edit", "btn", "btn-primary");
     editButton.textContent = "Edit Post";
+
     newBody.append(editButton);
 
     const delButton = document.createElement("a");
     delButton.classList.add("delete", "btn", "btn-primary");
     delButton.textContent = "Delete Post";
+    delButton.addEventListener("click", delTheBlog);
     newBody.append(delButton);
   });
+};
+
+const deleteBlog = (id) => {
+  fetch(`/api/blog/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(getPost());
+};
+
+const delTheBlog = (e) => {
+  console.log(posts);
+  const currentBlog = { posts };
+  console.log(currentBlog);
+  console.log("Hello");
+  deleteBlog(currentBlog.id);
 };
