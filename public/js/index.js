@@ -38,8 +38,7 @@ $(document).ready(function () {
   });
 });
 
-// See Posts
-
+// Code to query the database then render all of the blog posts to the front end.
 let posts;
 
 const getPost = (blogPost) => {
@@ -110,13 +109,16 @@ const deleteBlog = (id) => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(getPost());
+  }).then(() => {
+    location.reload();
+  });
 };
 
 const delTheBlog = (e) => {
-  console.log(posts);
-  const currentBlog = { posts };
-  console.log(currentBlog);
-  console.log("Hello");
-  deleteBlog(currentBlog.id);
+  e.preventDefault();
+  console.log(e.target.id)
+  console.log("in delTheBlog");
+  const currentPostId = e.target.id
+  console.log('handlePostDelete -> currentPost', currentPostId);
+  deleteBlog(currentPostId);
 };
