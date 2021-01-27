@@ -91,6 +91,7 @@ const newRow = (data) => {
     editButton.classList.add("edit", "btn", "btn-primary");
     editButton.setAttribute("id", post.id)
     editButton.textContent = "Edit Post";
+    editButton.addEventListener("click", updateTheBlog);
 
     newBody.append(editButton);
 
@@ -103,6 +104,7 @@ const newRow = (data) => {
   });
 };
 
+// Functions to delete a blog from the database
 const deleteBlog = (id) => {
   fetch(`/api/blog/${id}`, {
     method: "DELETE",
@@ -116,9 +118,16 @@ const deleteBlog = (id) => {
 
 const delTheBlog = (e) => {
   e.preventDefault();
+  const currentPostId = e.target.id
+  deleteBlog(currentPostId);
+};
+
+// Functions to update a blog post
+const updateTheBlog = (e) => {
+  e.preventDefault();
   console.log(e.target.id)
-  console.log("in delTheBlog");
+  console.log("in updateTheBlog");
   const currentPostId = e.target.id
   console.log('handlePostDelete -> currentPost', currentPostId);
-  deleteBlog(currentPostId);
+  window.location.href = `/blog?post_id=${currentPostId}`;
 };
