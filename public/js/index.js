@@ -18,6 +18,7 @@ $(document).ready(function () {
 
   function mainScreen() {
     $("#parks-section").hide();
+    $("#form-container").hide();
   }
 
   mainScreen();
