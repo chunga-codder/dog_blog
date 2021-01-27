@@ -88,6 +88,11 @@ const newRow = (data) => {
     newText.textContent = post.body;
     newBody.append(newText);
 
+    const newUsername = document.createElement("p");
+    newUsername.classList.add("card-text");
+    newUsername.textContent = `Author: ${post.username}`;
+    newBody.append(newUsername);
+
     const editButton = document.createElement("button");
     editButton.classList.add("edit", "btn", "btn-primary");
     editButton.setAttribute("id", post.id)
