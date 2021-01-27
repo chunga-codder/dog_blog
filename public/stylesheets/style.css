@@ -5,26 +5,33 @@ form.login {
 
 #map {
   height: 500px;
+  margin-bottom: 25px;
 }
 
+.hide {
+  display: none;
+}
+
+.button-addon2 {
+  width: 150px;
+}
 
 #blog-container {
   margin-top: 15px;
-  border: 1px solid red;
 }
 
-.blog-card {
-  border: 1px solid green;
+.card {
+  margin-top: 1rem;
 }
 
-.blog-card-body {
-  border: 1px solid blue;
+#general-btn {
+  margin-right: 1rem;
 }
 
-.blog-card-header {
-  border: 1px solid purple;
+.btn-primary {
+  margin-top: 1rem;
 }
 
-.blog-card-text {
-  border: 1px solid orange;
+.edit {
+  margin-right: 1rem;
 }

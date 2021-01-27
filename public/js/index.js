@@ -1,7 +1,20 @@
 // Handle page rendering based on category of blog selected
 
 $(document).ready(function () {
-  console.log("index js");
+  $.get("/api/user_data").then(function(data) {
+    console.log(data)
+    if(data.email) {
+        $('#navLogout').removeClass('hide')
+    } else {
+        $('#navLogin').removeClass("hide")
+    };        
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/signin");
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/logout");
+});
 
   function mainScreen() {
     $("#parks-section").hide();
@@ -11,19 +24,22 @@ $(document).ready(function () {
 
   $("#general-btn").on("click", function () {
     $("#parks-section").hide();
+    $("#blog-container").show();
+    $("#form-container").hide();
   });
 
   $("#parks-btn").on("click", function () {
     $("#parks-section").show();
+    $("#blog-container").hide();
+    $("#form-container").hide();
   });
 });
-
 
 // Create Post
 document.addEventListener("DOMContentLoaded", (e) => {
   console.log("DOM loaded! 🚀");
 
-  const usernameInput = document.getElementById("usernameInput");
+  let usernameInput = document.getElementById("usernameInput");
   const titleInput = document.getElementById("titleInput");
   const bodyInput = document.getElementById("bodyInput");
 
@@ -49,36 +65,45 @@ document.addEventListener("DOMContentLoaded", (e) => {
     //   }
   };
 
-  const submitPost = (post) => {
+  const submitPost = (blogPost) => {
     fetch("/api/blog", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(post),
+      body: JSON.stringify(blogPost),
     })
       .then((response) => response.json())
       .then((res) => {
         console.log("Success", res);
-        location.reload();
-        console.log(post);
+        titleInput.value = " ";
+        bodyInput.value = " ";
       })
       .catch((err) => {
-        console.error("Error");
+        console.log("Error");
       });
   };
 
   const formBtn = document.querySelector("#form-btn");
   const blogContainer = document.querySelector("#blog-container");
 
-  formBtn.addEventListener("click", newRow);
+  formBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    newRow(e);
+    console.log(usernameInput, titleInput, bodyInput);
+    if (!usernameInput) {
+      usernameInput = "noUserName";
+    }
+    submitPost(newRow);
+    getPost();
+  });
 });
 
 // See Posts
 
 let posts;
 
-const getPost = () => {
+const getPost = (blogPost) => {
   fetch("/api/blog", {
     method: "GET",
     headers: {
@@ -89,32 +114,49 @@ const getPost = () => {
     .then((data) => {
       console.log("Success in getting posts:", data);
       posts = data;
+      for (let i = 0; i < posts.length; i++) {
+        newRow(posts);
+        console.log(posts[i]);
+      }
     });
-  console.log(posts);
 };
 
 getPost();
 
-
 // Create rows to see each blog post/category
-const newRow = (post) => {
+const newRow = (data) => {
   const blogContainer = document.querySelector("#blog-container");
+
+  const newCardSize = document.createElement("div");
+  newCardSize.classList.add("col-md-12");
+  blogContainer.append(newCardSize);
 
   const newCard = document.createElement("div");
   newCard.classList.add("card");
-  blogContainer.append(newCard);
+  newCardSize.append(newCard);
 
   const newBody = document.createElement("div");
   newBody.classList.add("card-body");
-  blogContainer.append(newBody);
+  newCard.append(newBody);
 
   const newTitle = document.createElement("h5");
   newTitle.classList.add("card-title");
-  newTitle.textContent = "test";
-  blogContainer.append(newTitle);
+  newTitle.textContent = titleInput.value;
+  console.log(titleInput.value);
+  newBody.append(newTitle);
 
   const newText = document.createElement("p");
   newText.classList.add("card-text");
-  newText.textContent = "text-test";
-  blogContainer.append(newText); 
+  newText.textContent = bodyInput.value;
+  newBody.append(newText);
+
+  const editButton = document.createElement("a");
+  editButton.classList.add("edit", "btn", "btn-primary");
+  editButton.textContent = "Edit Post";
+  newBody.append(editButton);
+
+  const delButton = document.createElement("a");
+  delButton.classList.add("delete", "btn", "btn-primary");
+  delButton.textContent = "Delete Post";
+  newBody.append(delButton);
 };
