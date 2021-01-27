@@ -1,6 +1,21 @@
 // Handle page rendering based on category of blog selected
 
 $(document).ready(function () {
+  $.get("/api/user_data").then(function(data) {
+    console.log(data)
+    if(data.email) {
+        $('#navLogout').removeClass('hide')
+    } else {
+        $('#navLogin').removeClass("hide")
+    };        
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/signin");
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/logout");
+});
+
   function mainScreen() {
     $("#parks-section").hide();
   }

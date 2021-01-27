@@ -8,6 +8,10 @@ form.login {
   margin-bottom: 25px;
 }
 
+.hide {
+  display: none;
+}
+
 .button-addon2 {
   width: 150px;
 }
