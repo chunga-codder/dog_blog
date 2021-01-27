@@ -59,6 +59,7 @@ const getPost = (blogPost) => {
 
 getPost();
 
+
 // Create rows to see each blog post/category
 const newRow = (data) => {
   const blogContainer = document.querySelector("#blog-container");

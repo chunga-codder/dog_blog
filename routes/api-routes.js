@@ -32,7 +32,7 @@ router.get("/api/blog/category/:category", (req, res) => {
 router.get("/api/blog/user/:user", (req, res) => {
   db.Blog.findAll({
     where: {
-      category: req.params.user,
+      username: req.params.user,
     },
   }).then((dbBlog) => {
     res.json(dbBlog);
@@ -48,6 +48,7 @@ router.put('/api/blog', (req, res) => {
   }).then((dbPost) => res.json(dbPost));
 });
 
+// route to delete posts
 router.delete("/api/blog/:id", (req, res) => {
   db.Blog.destroy({
     where: {

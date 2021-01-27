@@ -92,7 +92,7 @@ $(document).ready(() => {
             category: post.category
         }).then(() => {
             $("#alertDone").fadeIn(500);
-
+            window.location.href = '/';
         }).catch((err) => {
             console.log(err)
         })
