@@ -14,18 +14,16 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.justify-content-left
         span.navbar-toggler-icon
     div#navbarNavDropdown.collapse.navbar-collapse
         ul.navbar-nav
-            li.nav-item
-                a.nav-link(href='/') Home
-            li.nav-item
-                a.nav-link(href='/blog') Blog
-            li.nav-item
-                a.nav-link(href='/parks') Parks
-            li.nav-item
-                a.nav-link(href='/members') Members
-            li.nav-item.hide#navLogout
-                a.nav-link(href='/logout') Logout
-            li.nav-item.hide#navLogin
-                a.nav-link(href='/signin') Login
+          li.nav-item
+            a.nav-link(href='/') Home
+          li.nav-item
+            a.nav-link(href='/blog') Blog
+          li.nav-item
+            a.nav-link(href='/members') Members
+          li.nav-item.hide#navLogout
+            a.nav-link(href='/logout') Logout
+          li.nav-item.hide#navLogin
+            a.nav-link(href='/signin') Login
 //- End Nav
 //- Start of Content Container
 #page-content
@@ -60,7 +58,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.justify-content-left
               span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
               span() Error:
                   span(class="msg")
-            div(style="display: none" id="alertDone" class="alert" role="alert")
+            div(style="display: none" id="alertDone" class="alert alert-success" role="alert")
               span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
               span() Success, your post was recorded!
 //- Start of Footer
