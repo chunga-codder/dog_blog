@@ -1,23 +1,24 @@
 // Handle page rendering based on category of blog selected
 
 $(document).ready(function () {
-  $.get("/api/user_data").then(function(data) {
-    console.log(data)
-    if(data.email) {
-        $('#navLogout').removeClass('hide')
+  $.get("/api/user_data").then(function (data) {
+    console.log(data);
+    if (data.email) {
+      $("#navLogout").removeClass("hide");
     } else {
-        $('#navLogin').removeClass("hide")
-    };        
-});
-$('#navLogin').on('click', () => {
+      $("#navLogin").removeClass("hide");
+    }
+  });
+  $("#navLogin").on("click", () => {
     window.location.replace("/signin");
-});
-$('#navLogin').on('click', () => {
+  });
+  $("#navLogin").on("click", () => {
     window.location.replace("/logout");
-});
+  });
 
   function mainScreen() {
     $("#parks-section").hide();
+    $("#form-container").hide();
   }
 
   mainScreen();
@@ -114,10 +115,8 @@ const getPost = (blogPost) => {
     .then((data) => {
       console.log("Success in getting posts:", data);
       posts = data;
-      for (let i = 0; i < posts.length; i++) {
-        newRow(posts);
-        console.log(posts[i]);
-      }
+      newRow(posts);
+      console.log(posts);
     });
 };
 
@@ -127,36 +126,37 @@ getPost();
 const newRow = (data) => {
   const blogContainer = document.querySelector("#blog-container");
 
-  const newCardSize = document.createElement("div");
-  newCardSize.classList.add("col-md-12");
-  blogContainer.append(newCardSize);
+  data.forEach((post) => {
+    const newCardSize = document.createElement("div");
+    newCardSize.classList.add("col-md-12");
+    blogContainer.append(newCardSize);
 
-  const newCard = document.createElement("div");
-  newCard.classList.add("card");
-  newCardSize.append(newCard);
+    const newCard = document.createElement("div");
+    newCard.classList.add("card");
+    newCardSize.append(newCard);
 
-  const newBody = document.createElement("div");
-  newBody.classList.add("card-body");
-  newCard.append(newBody);
+    const newBody = document.createElement("div");
+    newBody.classList.add("card-body");
+    newCard.append(newBody);
 
-  const newTitle = document.createElement("h5");
-  newTitle.classList.add("card-title");
-  newTitle.textContent = titleInput.value;
-  console.log(titleInput.value);
-  newBody.append(newTitle);
+    const newTitle = document.createElement("h5");
+    newTitle.classList.add("card-title");
+    newTitle.textContent = post.title;
+    newBody.append(newTitle);
 
-  const newText = document.createElement("p");
-  newText.classList.add("card-text");
-  newText.textContent = bodyInput.value;
-  newBody.append(newText);
+    const newText = document.createElement("p");
+    newText.classList.add("card-text");
+    newText.textContent = post.body;
+    newBody.append(newText);
 
-  const editButton = document.createElement("a");
-  editButton.classList.add("edit", "btn", "btn-primary");
-  editButton.textContent = "Edit Post";
-  newBody.append(editButton);
+    const editButton = document.createElement("a");
+    editButton.classList.add("edit", "btn", "btn-primary");
+    editButton.textContent = "Edit Post";
+    newBody.append(editButton);
 
-  const delButton = document.createElement("a");
-  delButton.classList.add("delete", "btn", "btn-primary");
-  delButton.textContent = "Delete Post";
-  newBody.append(delButton);
+    const delButton = document.createElement("a");
+    delButton.classList.add("delete", "btn", "btn-primary");
+    delButton.textContent = "Delete Post";
+    newBody.append(delButton);
+  });
 };
