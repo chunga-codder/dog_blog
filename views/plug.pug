@@ -4,6 +4,7 @@ html
     block head
       link(rel="stylesheet", href='/stylesheets/style.css')
       link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
+      link(rel="stylesheet", href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous")
       script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous")  
@@ -37,37 +38,41 @@ html
         .jumbotron.text-center 
           h1 Dog Blog
             h2 Select Blog Categories Below
+            a.btn.btn-primary#general-btn(href='#') General
+              i.fas.fa-dog
+            a.btn.btn-primary#parks-btn(href='#') Parks
+              i.fas.fa-paw  
 
-    block home
-    .container
-      .row
-        .col-md-4
-          .card(style='width: 18rem')
-            img.card-img-top(src='...', alt='...')
-            .card-body
-              h5.card-title General
-              p.card-text
-                |Some quick example text to build on the card title and make up
-                |the bulk of the card&apos;s content.
-              a.btn.btn-primary#general-btn(href='#') General
-        .col-md-4
-          .card(style='width: 18rem')
-            img.card-img-top(src='...', alt='...')
-            .card-body
-              h5.card-title Parks
-              p.card-text
-                |Some quick example text to build on the card title and make up
-                |the bulk of the card&apos;s content.
-              a.btn.btn-primary#parks-btn(href='#') Parks   
-        .col-md-4
-          .card(style='width: 18rem')
-            img.card-img-top(src='...', alt='...')
-            .card-body
-              h5.card-title Lost And Found
-              p.card-text
-                |Some quick example text to build on the card title and make up
-                |the bulk of the card&apos;s content.
-              a.btn.btn-primary(href='#') Lost and Found
+    //- block home
+    //- .container
+    //-   .row
+    //-     .col-md-4
+    //-       .card(style='width: 18rem')
+    //-         img.card-img-top(src='...', alt='...')
+    //-         .card-body
+    //-           h5.card-title General
+    //-           p.card-text
+    //-             |Some quick example text to build on the card title and make up
+    //-             |the bulk of the card&apos;s content.
+    //-           a.btn.btn-primary#general-btn(href='#') General
+    //-     .col-md-4
+    //-       .card(style='width: 18rem')
+    //-         img.card-img-top(src='...', alt='...')
+    //-         .card-body
+    //-           h5.card-title Parks
+    //-           p.card-text
+    //-             |Some quick example text to build on the card title and make up
+    //-             |the bulk of the card&apos;s content.
+    //-           a.btn.btn-primary#parks-btn(href='#') Parks   
+    //-     .col-md-4
+    //-       .card(style='width: 18rem')
+    //-         img.card-img-top(src='...', alt='...')
+    //-         .card-body
+    //-           h5.card-title Lost And Found
+    //-           p.card-text
+    //-             |Some quick example text to build on the card title and make up
+    //-             |the bulk of the card&apos;s content.
+    //-           a.btn.btn-primary(href='#') Lost and Found
 
     block blog
     .container
@@ -81,7 +86,7 @@ html
       //-         |#{body}
 
     block form   
-    .container
+    .container#form-container
       .row
         .col-md-12
           .form-group

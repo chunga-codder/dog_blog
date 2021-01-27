@@ -31,9 +31,19 @@ $(document).ready(function() {
           window.location.replace("/members");
           // If there's an error, log the error
         })
+     main
+        .catch(handleLoginErr);
+    }
+
+    function handleLoginErr(err) {
+      console.log(err)
+        $("#alert .msg").text(` Login information was incorrect`);
+        $("#alert").fadeIn(500);
+
         .catch(function(err) {
           console.log(err);
         });
+   main
     }
   });
   
