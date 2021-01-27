@@ -49,7 +49,7 @@ $(document).ready(() => {
             $("#alertDone").fadeIn(500);
 
         }).catch((err) => {
-            // console.log(err)
+            console.log(err)
         })
     }
 }); 
