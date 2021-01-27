@@ -3,6 +3,32 @@ form.login {
   margin-top: 50px;
 }
 
+#blog-container {
+  background: url('/pictures/dogs.png');
+  background-repeat: repeat-y;
+}
+
+.card {
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.btn.btn-primary {
+  width: 100px;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  float: right;
+  width: 125px;
+}
+
+.btn-danger {
+  float: right;
+  width: 125px;
+  margin-right: 15px;
+}
+
 #map {
   height: 500px;
   margin-bottom: 25px;

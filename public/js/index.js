@@ -94,7 +94,7 @@ const newRow = (data) => {
     newBody.append(newUsername);
 
     const editButton = document.createElement("button");
-    editButton.classList.add("edit", "btn", "btn-primary");
+    editButton.classList.add("edit", "btn", "btn-secondary");
     editButton.setAttribute("id", post.id)
     editButton.textContent = "Edit Post";
     editButton.addEventListener("click", updateTheBlog);
@@ -102,7 +102,7 @@ const newRow = (data) => {
     newBody.append(editButton);
 
     const delButton = document.createElement("button");
-    delButton.classList.add("delete", "btn", "btn-primary");
+    delButton.classList.add("delete", "btn", "btn-danger");
     delButton.setAttribute("id", post.id)
     delButton.textContent = "Delete Post";
     delButton.addEventListener("click", delTheBlog);
