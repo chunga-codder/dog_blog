@@ -1,6 +1,21 @@
 // Handle page rendering based on category of blog selected
 
 $(document).ready(function () {
+  $.get("/api/user_data").then(function(data) {
+    console.log(data)
+    if(data.email) {
+        $('#navLogout').removeClass('hide')
+    } else {
+        $('#navLogin').removeClass("hide")
+    };        
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/signin");
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/logout");
+});
+
   function mainScreen() {
     $("#parks-section").hide();
   }
@@ -10,7 +25,7 @@ $(document).ready(function () {
   $("#general-btn").on("click", function () {
     $("#parks-section").hide();
     $("#blog-container").show();
-    $("#form-container").show();
+    $("#form-container").hide();
   });
 
   $("#parks-btn").on("click", function () {
@@ -113,7 +128,7 @@ const newRow = (data) => {
   const blogContainer = document.querySelector("#blog-container");
 
   const newCardSize = document.createElement("div");
-  newCardSize.classList.add("col-md-4");
+  newCardSize.classList.add("col-md-12");
   blogContainer.append(newCardSize);
 
   const newCard = document.createElement("div");
