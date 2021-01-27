@@ -1,6 +1,21 @@
 // Handle page rendering based on category of blog selected
 
 $(document).ready(function () {
+  $.get("/api/user_data").then(function(data) {
+    console.log(data)
+    if(data.email) {
+        $('#navLogout').removeClass('hide')
+    } else {
+        $('#navLogin').removeClass("hide")
+    };        
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/signin");
+});
+$('#navLogin').on('click', () => {
+    window.location.replace("/logout");
+});
+
   function mainScreen() {
     $("#parks-section").hide();
   }
@@ -144,34 +159,4 @@ const newRow = (data) => {
   delButton.classList.add("delete", "btn", "btn-primary");
   delButton.textContent = "Delete Post";
   newBody.append(delButton);
-    console.log("in index.js")
-    $.get("/api/user_data").then(function(data) {
-        console.log(data)
-        if(data.email) {
-            $('#navLogout').removeClass('hide')
-        } else {
-            $('#navLogin').removeClass("hide")
-        };        
-    });
-    $('#navLogin').on('click', () => {
-        window.location.replace("/signin");
-    });
-    $('#navLogin').on('click', () => {
-        window.location.replace("/logout");
-    });
-    
-    $.get("/api/user_data").then(function(data) {
-        console.log(data)
-        if(data.email) {
-            $('#navLogout').removeClass('hide')
-        } else {
-            $('#navLogin').removeClass("hide")
-        };        
-    });
-    $('#navLogin').on('click', () => {
-        window.location.replace("/signin");
-    });
-    $('#navLogin').on('click', () => {
-        window.location.replace("/logout");
-    });
 };
