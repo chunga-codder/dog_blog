@@ -5,9 +5,9 @@ $(document).ready(() => {
     const passwordInput = $("input#password-input");
   
     // When the form is submitted, we validate there's an email and password entered
-    loginForm.on("submit", function(event) {
-      event.preventDefault();
-      var userData = {
+    loginForm.on("submit", (e) => {
+      e.preventDefault();
+      let userData = {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
       };
@@ -36,7 +36,7 @@ $(document).ready(() => {
     }
 
     function handleLoginErr(err) {
-      console.log(err)
+        console.log(err)
         $("#alert .msg").text(` Login information was incorrect`);
         $("#alert").fadeIn(500);
     }
