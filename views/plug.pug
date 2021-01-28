@@ -33,57 +33,22 @@ html
             li.nav-item.hide#navLogin
                 a.nav-link(href='/signin') Login
   
-    block jumbotron
+    block jumbotron-fluid
     .container
-        .jumbotron.text-center 
+        .jumbotron.text-center(style = 'margin-bottom: 3px;' ) 
           h1 Dog Blog
+            br
+            img(src="/pictures/reading_dog.jpg", alt='dog', style='width:200px;height:200px;')
             h2 See blogs below and contribute!
             a.btn.btn-primary#general-btn(href='#') General 
               i.fas.fa-dog
             a.btn.btn-primary#parks-btn(href='#') Resources 
               i.fas.fa-paw  
 
-    //- block home
-    //- .container
-    //-   .row
-    //-     .col-md-4
-    //-       .card(style='width: 18rem')
-    //-         img.card-img-top(src='...', alt='...')
-    //-         .card-body
-    //-           h5.card-title General
-    //-           p.card-text
-    //-             |Some quick example text to build on the card title and make up
-    //-             |the bulk of the card&apos;s content.
-    //-           a.btn.btn-primary#general-btn(href='#') General
-    //-     .col-md-4
-    //-       .card(style='width: 18rem')
-    //-         img.card-img-top(src='...', alt='...')
-    //-         .card-body
-    //-           h5.card-title Parks
-    //-           p.card-text
-    //-             |Some quick example text to build on the card title and make up
-    //-             |the bulk of the card&apos;s content.
-    //-           a.btn.btn-primary#parks-btn(href='#') Parks   
-    //-     .col-md-4
-    //-       .card(style='width: 18rem')
-    //-         img.card-img-top(src='...', alt='...')
-    //-         .card-body
-    //-           h5.card-title Lost And Found
-    //-           p.card-text
-    //-             |Some quick example text to build on the card title and make up
-    //-             |the bulk of the card&apos;s content.
-    //-           a.btn.btn-primary(href='#') Lost and Found
 
     block blog
     .container
       .row#blog-container
-      //-   .col-md-4
-      //-     .card
-      //-       .card-body
-      //-       h5.card-title#titleVal #{title}
-      //-       //- h6.card-subtitle.mb-2.text-muted#usernameInput #{username}
-      //-       p.card-text#bodyVal
-      //-         |#{body}
 
     block form   
     .container#form-container
