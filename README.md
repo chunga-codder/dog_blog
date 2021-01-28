@@ -34,10 +34,6 @@ THEN I my post is added to the main list of blogs
 WHEN I click on the resources button
 THEN I am shown places of interest that are relevant to me in my area
 
-## Tests
-
-    coming soon
-
 ## Contributors
 
     Liz Larkin
