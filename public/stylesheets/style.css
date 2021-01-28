@@ -1,3 +1,7 @@
+body {
+  background: url("/pictures/paws.png");
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
