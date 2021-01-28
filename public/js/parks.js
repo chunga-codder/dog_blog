@@ -87,13 +87,9 @@ function getApi(requestUrl) {
 
   let lat = [];
   console.log(lat);
+  console.log(typeof(lat))
   let lon = [];
   console.log(lon);
-  // let coordinates = {
-  //   lat: lat,
-  //   lon: lon,
-  // }
-  // console.log(coordinates)
 
   // Connect to Places API
 let map;
@@ -101,20 +97,24 @@ let service;
 let infowindow;
 
 function initMap() {
-  // console.log(typeof(lat));
-  // console.log(lat);
-  // localLat2 = parseFloat(lat)
-  // console.log(localLat2)
-  // console.log(typeof(localLat2))
+  // let coordinates = {
+  //   lat: lat,
+  //   lon: lon
+  // }
+  // console.log(coordinates)
 
-  let coordinates = {
-    lat: lat,
-    lon: lon
-  }
-  console.log(coordinates)
+  let intLat = parseFloat(lat)
+  console.log(intLat)
+  console.log(typeof(intLat))
 
-  var userLocation = new google.maps.LatLng(coordinates.lat[0], coordinates.lon[0])
-  console.log(userLocation);
+  let intLon = parseFloat(lon)
+  console.log(intLon)
+  console.log(typeof(intLon))
+
+  var userLocation = new google.maps.LatLng({lat: 37, lng: -122})
+  // google.maps.LatLng(coordinates)
+  console.log(userLocation.lat())
+  console.log(userLocation.lng())
   console.log(typeof(userLocation))
 
   infowindow = new google.maps.InfoWindow();
@@ -157,4 +157,3 @@ function createMarker(place) {
   initMap();
   
 }
-
