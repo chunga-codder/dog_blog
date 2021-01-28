@@ -1,3 +1,7 @@
+// require('dotenv').config({path: '../'});
+// let API_KEY = process.env.API_KEY;
+// console.log(API_KEY)
+
 const findParksBtn = document.querySelector('#find-parks-btn');
 const findStoresBtn = document.querySelector('#find-stores-btn');
 const findAdoptionBtn = document.querySelector('#find-adoption-btn');
@@ -8,6 +12,7 @@ console.log(address);
 
 // Default marker type
 let googleName = 'dog park';
+console.log(googleName);
 
 
 findParksBtn.addEventListener("click", (e) => {
@@ -111,7 +116,7 @@ function initMap() {
   console.log(intLon)
   console.log(typeof(intLon))
 
-  var userLocation = new google.maps.LatLng({lat: 37, lng: -122})
+  var userLocation = new google.maps.LatLng({lat: 37.7749, lng: -122.4194})
   // google.maps.LatLng(coordinates)
   console.log(userLocation.lat())
   console.log(userLocation.lng())
