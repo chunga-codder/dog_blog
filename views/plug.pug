@@ -7,11 +7,13 @@ html
       link(rel="stylesheet", href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous")
       script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous")  
+      crossorigin="anonymous")
+      link(rel="preconnect" href="https://fonts.gstatic.com")
+      link(href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet")
       script(src="https://polyfill.io/v3/polyfill.min.js?features=default")
       script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3HjiS9yqJoirke_iTfk6hAOMScU3P6wE&callback=initMap&libraries=&v=weekly", defer)
       script(defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UWO33w4NOd-Gb3m1WGg8N3Tfp0-5C0w&libraries=places&callback=initMap")
-
+  
   body
 
     block navbar
@@ -38,7 +40,7 @@ html
         .jumbotron.text-center(style = 'margin-bottom: 3px;' ) 
           h1 Dog Blog
             br
-            img(src="/pictures/reading_dog.jpg", alt='dog', style='width:200px;height:200px;')
+            img(src="/pictures/reading_dog.jpg", alt='dog', style='width:200px;height:200px;margin-top: 20px')
             h2 See blogs below and contribute!
             a.btn.btn-primary#general-btn(href='#') General 
               i.fas.fa-dog
@@ -79,7 +81,7 @@ html
     
     block foot
       //- Start of Footer
-      footer#sticky-footer.py-4.bg-dark.text-white
+      footer.fixed-bottom.py-4.bg-dark.text-white
         .container.text-center
           small Copyright &copy; 2020
       //- End of Footer

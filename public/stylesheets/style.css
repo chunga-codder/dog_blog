@@ -15,6 +15,13 @@ form.login {
 .card {
   opacity: 0.8;
   font-weight: bold;
+  margin-right: 1rem;
+  margin-bottom: 20px;
+}
+
+h1,
+h2 {
+  font-family: "Architects Daughter", cursive;
 }
 
 .btn.btn-primary {
@@ -48,10 +55,6 @@ form.login {
 
 #blog-container {
   margin-top: 15px;
-}
-
-.card {
-  margin-top: 1rem;
 }
 
 #general-btn {
