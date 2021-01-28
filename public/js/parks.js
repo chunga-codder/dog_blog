@@ -2,27 +2,34 @@ const findParksBtn = document.querySelector('#find-parks-btn');
 const findStoresBtn = document.querySelector('#find-stores-btn');
 const findAdoptionBtn = document.querySelector('#find-adoption-btn');
 
+let address = [];
 let googleName = 'dog park';
+let lat = [];
+console.log(lat);
+let lon = [];
 
 findParksBtn.addEventListener("click", (e) => {
   e.preventDefault();
   googleName = 'dog park';
-  codeAddress()
-  initMap()
+  collectZip();
+  zipConnection();
+  initMap();
 });
 
 findStoresBtn.addEventListener("click", (e) => {
   e.preventDefault();
   googleName = 'pet store';
-  collectZip()
-  initMap()
+  collectZip();
+  zipConnection();
+  initMap();
 });
 
 findAdoptionBtn.addEventListener("click", (e) => {
   e.preventDefault();
   googleName = 'dog adoption';
-  collectZip()
-  initMap()
+  collectZip();
+  zipConnection();
+  initMap();
 });
 
 
@@ -70,68 +77,33 @@ function createMarker(place) {
   });
 }
 
-// var geocoder;
+function collectZip() {
+  let zipCode = document.querySelector('#zip-input').value;
+  address.push(zipCode);
+  console.log(address) 
+}
 
-// function initialize() {
-//   geocoder = new google.maps.Geocoder();
-//   var latlng = new google.maps.LatLng(-34.397, 150.644);
-//   var mapOptions = {
-//     zoom: 8,
-//     center: latlng
-//   }
-//   map = new google.maps.Map(document.getElementById('map'), mapOptions);
-// }
+function zipConnection() {
+var requestUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAKe_ZW4SBBlRchQCJD_fzo23X_TmA1Rvg`
+console.log(requestUrl);
 
-// function codeAddress() {
-//   let zipCode = document.querySelector('#zipcode-input').value;
-//   geocoder.geocode( { 'address': zipCode}, function(results, status) {
-//     if (status == 'OK') {
-//       map.setCenter(results[0].geometry.location);
-//       var marker = new google.maps.Marker({
-//           map: map,
-//           position: results[0].geometry.location
-//       });
-//     } else {
-//       alert('Geocode was not successful for the following reason: ' + status);
-//     }
-//   });
-// }
+function getApi(requestUrl) {
+  fetch(requestUrl)
+    .then(function (response) {
+        return response.json();
+        
+    })
+    .then(function (data) {
+      let localLat = data.results[0].geometry.location.lat
+      console.log(localLat)
+      lat.push(localLat)
+      let localLon = data.results[0].geometry.location.lng
+      console.log(localLon)
+      lon.push(localLon)
+    })
+  }
+  getApi(requestUrl);
+  
+}
 
-
-
-
-// var address;
-
-// function collectZip() {
-//   let zipCode = document.querySelector('#zipcode-input').value;
-//   console.log(zipCode);
-//   address.push(zipCode)
-// }
-
-// console.log(address)
-
-// Geocoder.geocode(results, status) {
-//   address: string,
-//   location: LatLng,
-//   placeId: string,
-//   bounds: LatLngBounds,
-//   componentRestrictions: GeocoderComponentRestrictions,
-//   region: string
-//  }
-
-
-fetch("https://google-maps-geocoding.p.rapidapi.com/geocode/json?address=94158&language=en", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "89214c67b8msh8e994452432b20bp1e9df8jsne2fa5de2365c",
-		"x-rapidapi-host": "google-maps-geocoding.p.rapidapi.com"
-	}
-})
-.then(function (response) {
-  console.log(response);
-  console.log(response.status);
-  return response.json();
-})
-.catch(err => {
-	console.error(err);
-});
+  
