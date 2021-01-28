@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 
 // Rendering home page on launch
 router.get("/blog", (req, res) => {
-  res.render("2blog");
+  res.render("blog");
 });
 
 
