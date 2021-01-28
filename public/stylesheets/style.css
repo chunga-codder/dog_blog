@@ -4,8 +4,12 @@ form.login {
 }
 
 #blog-container {
-  background: url('/pictures/dogs.png');
+  background: url("/pictures/dogs.png");
   background-repeat: repeat-y;
+}
+
+.jumbotron {
+  background-color: transparent !important;
 }
 
 .card {
