@@ -7,18 +7,21 @@ let googleName = 'dog park';
 findParksBtn.addEventListener("click", (e) => {
   e.preventDefault();
   googleName = 'dog park';
+  codeAddress()
   initMap()
 });
 
 findStoresBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  googleName = 'pet store'
+  googleName = 'pet store';
+  collectZip()
   initMap()
 });
 
 findAdoptionBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  googleName = 'dog adoption'
+  googleName = 'dog adoption';
+  collectZip()
   initMap()
 });
 
@@ -67,3 +70,68 @@ function createMarker(place) {
   });
 }
 
+// var geocoder;
+
+// function initialize() {
+//   geocoder = new google.maps.Geocoder();
+//   var latlng = new google.maps.LatLng(-34.397, 150.644);
+//   var mapOptions = {
+//     zoom: 8,
+//     center: latlng
+//   }
+//   map = new google.maps.Map(document.getElementById('map'), mapOptions);
+// }
+
+// function codeAddress() {
+//   let zipCode = document.querySelector('#zipcode-input').value;
+//   geocoder.geocode( { 'address': zipCode}, function(results, status) {
+//     if (status == 'OK') {
+//       map.setCenter(results[0].geometry.location);
+//       var marker = new google.maps.Marker({
+//           map: map,
+//           position: results[0].geometry.location
+//       });
+//     } else {
+//       alert('Geocode was not successful for the following reason: ' + status);
+//     }
+//   });
+// }
+
+
+
+
+// var address;
+
+// function collectZip() {
+//   let zipCode = document.querySelector('#zipcode-input').value;
+//   console.log(zipCode);
+//   address.push(zipCode)
+// }
+
+// console.log(address)
+
+// Geocoder.geocode(results, status) {
+//   address: string,
+//   location: LatLng,
+//   placeId: string,
+//   bounds: LatLngBounds,
+//   componentRestrictions: GeocoderComponentRestrictions,
+//   region: string
+//  }
+
+
+fetch("https://google-maps-geocoding.p.rapidapi.com/geocode/json?address=94158&language=en", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "89214c67b8msh8e994452432b20bp1e9df8jsne2fa5de2365c",
+		"x-rapidapi-host": "google-maps-geocoding.p.rapidapi.com"
+	}
+})
+.then(function (response) {
+  console.log(response);
+  console.log(response.status);
+  return response.json();
+})
+.catch(err => {
+	console.error(err);
+});
