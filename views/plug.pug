@@ -3,15 +3,17 @@ html
     title My Site - #{title}
     block head
       link(rel="stylesheet", href='/stylesheets/style.css')
-      link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
+      script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
       link(rel="stylesheet", href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous")
       script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous")  
+      crossorigin="anonymous")
+      link(rel="preconnect" href="https://fonts.gstatic.com")
+      link(href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet")
       script(src="https://polyfill.io/v3/polyfill.min.js?features=default")
       script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3HjiS9yqJoirke_iTfk6hAOMScU3P6wE&callback=initMap&libraries=&v=weekly", defer)
       script(defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UWO33w4NOd-Gb3m1WGg8N3Tfp0-5C0w&libraries=places&callback=initMap")
-
+  
   body
 
     block navbar
@@ -23,69 +25,32 @@ html
         #navbarNavDropdown.collapse.navbar-collapse
           ul.navbar-nav
             li.nav-item
-              a.nav-link.active(aria-current='page', href='./index.html') Home
+                a.nav-link(href='/') Home
             li.nav-item
-              a.nav-link(href='blog') Blog
+                a.nav-link(href='/blog') Blog
             li.nav-item
-              a.nav-link(href='./parks.html') Parks
-            li.nav-item
-              a.nav-link(href='/members') Members
+                a.nav-link(href='/members') Members
             li.nav-item.hide#navLogout
-              a.nav-link(href='/logout') Logout
+                a.nav-link(href='/logout') Logout
             li.nav-item.hide#navLogin
-              a.nav-link(href='/signin') Login
+                a.nav-link(href='/signin') Login
   
-    block jumbotron
+    block jumbotron-fluid
     .container
-        .jumbotron.text-center 
+        .jumbotron.text-center(style = 'margin-bottom: 3px;' ) 
           h1 Dog Blog
-            h2 Select Blog Categories Below
+            br
+            img(src="/pictures/reading_dog.jpg", alt='dog', style='width:200px;height:200px;margin-top: 20px')
+            h2 See blogs below and contribute!
             a.btn.btn-primary#general-btn(href='#') General 
               i.fas.fa-dog
-            a.btn.btn-primary#parks-btn(href='#') Parks 
+            a.btn.btn-primary#parks-btn(href='#') Resources 
               i.fas.fa-paw  
 
-    //- block home
-    //- .container
-    //-   .row
-    //-     .col-md-4
-    //-       .card(style='width: 18rem')
-    //-         img.card-img-top(src='...', alt='...')
-    //-         .card-body
-    //-           h5.card-title General
-    //-           p.card-text
-    //-             |Some quick example text to build on the card title and make up
-    //-             |the bulk of the card&apos;s content.
-    //-           a.btn.btn-primary#general-btn(href='#') General
-    //-     .col-md-4
-    //-       .card(style='width: 18rem')
-    //-         img.card-img-top(src='...', alt='...')
-    //-         .card-body
-    //-           h5.card-title Parks
-    //-           p.card-text
-    //-             |Some quick example text to build on the card title and make up
-    //-             |the bulk of the card&apos;s content.
-    //-           a.btn.btn-primary#parks-btn(href='#') Parks   
-    //-     .col-md-4
-    //-       .card(style='width: 18rem')
-    //-         img.card-img-top(src='...', alt='...')
-    //-         .card-body
-    //-           h5.card-title Lost And Found
-    //-           p.card-text
-    //-             |Some quick example text to build on the card title and make up
-    //-             |the bulk of the card&apos;s content.
-    //-           a.btn.btn-primary(href='#') Lost and Found
 
     block blog
     .container
       .row#blog-container
-      //-   .col-md-4
-      //-     .card
-      //-       .card-body
-      //-       h5.card-title#titleVal #{title}
-      //-       //- h6.card-subtitle.mb-2.text-muted#usernameInput #{username}
-      //-       p.card-text#bodyVal
-      //-         |#{body}
 
     block form   
     .container#form-container
@@ -114,9 +79,12 @@ html
         div#map
 
     
-    //- block foot
-    //-     #footer
-    //-         p some footer content
+    block foot
+      //- Start of Footer
+      footer.navbarfixed-bottom.py-4.bg-dark.text-white
+        .container.text-center
+          small Copyright &copy; 2020
+      //- End of Footer
 
     block js
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")

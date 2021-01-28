@@ -19,8 +19,6 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.justify-content-left
             li.nav-item
                 a.nav-link(href='/blog') Blog
             li.nav-item
-                a.nav-link(href='/parks') Parks
-            li.nav-item
                 a.nav-link(href='/members') Members
             li.nav-item.hide#navLogout
                 a.nav-link(href='/logout') Logout
@@ -44,12 +42,12 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.justify-content-left
                     span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
                     span() Error:
                         span(class="msg")
-                button(type="submit" class="btn btn-default") Login
+                button(type="submit" class="btn btn-primary") Login
             br
             p Or sign up 
                 a(href="/signup") here
 //- Start of Footer
-footer#sticky-footer.py-4.bg-dark.text-white
+footer.fixed-bottom.py-4.bg-dark.text-white
   .container.text-center
     small Copyright &copy; 2020
 //- End of Footer
