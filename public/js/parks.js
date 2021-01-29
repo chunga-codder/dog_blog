@@ -1,47 +1,136 @@
+// require('dotenv').config({path: '../'});
+// let API_KEY = process.env.API_KEY;
+// console.log(API_KEY)
+
 const findParksBtn = document.querySelector('#find-parks-btn');
 const findStoresBtn = document.querySelector('#find-stores-btn');
 const findAdoptionBtn = document.querySelector('#find-adoption-btn');
 
+// Blank array for address (in this case just zip code, but could expand later for finer location granularity)
+let address = [];
+console.log(address);
+
+// Default marker type
 let googleName = 'dog park';
+console.log(googleName);
+
 
 findParksBtn.addEventListener("click", (e) => {
   e.preventDefault();
   googleName = 'dog park';
-  codeAddress()
-  initMap()
+  collectZip();
 });
 
 findStoresBtn.addEventListener("click", (e) => {
   e.preventDefault();
   googleName = 'pet store';
-  collectZip()
-  initMap()
+  collectZip();
 });
 
 findAdoptionBtn.addEventListener("click", (e) => {
   e.preventDefault();
   googleName = 'dog adoption';
-  collectZip()
-  initMap()
+  collectZip();
 });
 
+// Collect and store zip code from user input
+function collectZip() {
+  let zipCode = document.querySelector('#zip-input').value;
+  // Clear address array
+  clearAddress()
+  // Populate address array
+  address.push(zipCode);
+  zipConnection();
+}
 
+// Clear address function used to keep one single zipcode in address array
+function clearAddress() {
+  address = [];
+}
+
+// Clear latitude function used to keep one single latitude in lat array
+function clearLat() {
+  lat = [];
+}
+
+// Clear longitude function used to keep one single longitude in lat array
+function clearLon() {
+  lon = [];
+}
+
+
+// Connect to Geocoder API
+function zipConnection() {
+var requestUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAKe_ZW4SBBlRchQCJD_fzo23X_TmA1Rvg`
+console.log(requestUrl);
+
+function getApi(requestUrl) {
+  fetch(requestUrl)
+    .then(function (response) {
+        return response.json();
+        
+    })
+    .then(function (data) {
+      // collect and store latitude from geocoder
+      let localLat = parseFloat(data.results[0].geometry.location.lat)
+      // clear global latitude array
+      clearLat();
+      // populate global latitude array
+      lat.push(localLat)
+
+      // collect and store longitude goecoder
+      let localLon = parseFloat(data.results[0].geometry.location.lng)
+      // clear global longitude array
+      clearLon();
+      // populate global longitude array
+      lon.push(localLon)
+
+      return (localLat, localLon)
+    })
+  }
+  getApi(requestUrl);
+
+  let lat = [];
+  console.log(lat);
+  console.log(typeof(lat))
+  let lon = [];
+  console.log(lon);
+
+  // Connect to Places API
 let map;
 let service;
 let infowindow;
 
 function initMap() {
-  var sanfran = new google.maps.LatLng(37.7749, -122.4194)
+  // let coordinates = {
+  //   lat: lat,
+  //   lon: lon
+  // }
+  // console.log(coordinates)
+
+  let intLat = parseFloat(lat)
+  console.log(intLat)
+  console.log(typeof(intLat))
+
+  let intLon = parseFloat(lon)
+  console.log(intLon)
+  console.log(typeof(intLon))
+
+  var userLocation = new google.maps.LatLng({lat: 37.7749, lng: -122.4194})
+  // google.maps.LatLng(coordinates)
+  console.log(userLocation.lat())
+  console.log(userLocation.lng())
+  console.log(typeof(userLocation))
 
   infowindow = new google.maps.InfoWindow();
 
   map = new google.maps.Map(document.getElementById("map"), {
-    center: sanfran,
+    center: userLocation,
     zoom: 13,
   });
 
   const request = {
-    location: sanfran,
+    location: userLocation,
     radius: '5000',
     name: googleName,
     fields: ["name", "geometry"],
@@ -70,68 +159,6 @@ function createMarker(place) {
   });
 }
 
-// var geocoder;
-
-// function initialize() {
-//   geocoder = new google.maps.Geocoder();
-//   var latlng = new google.maps.LatLng(-34.397, 150.644);
-//   var mapOptions = {
-//     zoom: 8,
-//     center: latlng
-//   }
-//   map = new google.maps.Map(document.getElementById('map'), mapOptions);
-// }
-
-// function codeAddress() {
-//   let zipCode = document.querySelector('#zipcode-input').value;
-//   geocoder.geocode( { 'address': zipCode}, function(results, status) {
-//     if (status == 'OK') {
-//       map.setCenter(results[0].geometry.location);
-//       var marker = new google.maps.Marker({
-//           map: map,
-//           position: results[0].geometry.location
-//       });
-//     } else {
-//       alert('Geocode was not successful for the following reason: ' + status);
-//     }
-//   });
-// }
-
-
-
-
-// var address;
-
-// function collectZip() {
-//   let zipCode = document.querySelector('#zipcode-input').value;
-//   console.log(zipCode);
-//   address.push(zipCode)
-// }
-
-// console.log(address)
-
-// Geocoder.geocode(results, status) {
-//   address: string,
-//   location: LatLng,
-//   placeId: string,
-//   bounds: LatLngBounds,
-//   componentRestrictions: GeocoderComponentRestrictions,
-//   region: string
-//  }
-
-
-fetch("https://google-maps-geocoding.p.rapidapi.com/geocode/json?address=94158&language=en", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "89214c67b8msh8e994452432b20bp1e9df8jsne2fa5de2365c",
-		"x-rapidapi-host": "google-maps-geocoding.p.rapidapi.com"
-	}
-})
-.then(function (response) {
-  console.log(response);
-  console.log(response.status);
-  return response.json();
-})
-.catch(err => {
-	console.error(err);
-});
+  initMap();
+  
+}
