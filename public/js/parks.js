@@ -12,7 +12,6 @@ console.log(address);
 
 // Default marker type
 let googleName = 'dog park';
-console.log(googleName);
 
 
 findParksBtn.addEventListener("click", (e) => {
@@ -85,18 +84,65 @@ function getApi(requestUrl) {
       // populate global longitude array
       lon.push(localLon)
 
+      console.log("lan", localLon);
+      console.log("lot",localLat);
+
+      var userLocation = new google.maps.LatLng({lat: localLat, lng: localLon})
+
+
+      console.log("user locations: ",userLocation)
+
+      infowindow = new google.maps.InfoWindow();
+
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: userLocation,
+        zoom: 13,
+      });
+
+      const request = {
+        location: userLocation,
+        radius: '5000',
+        name: googleName,
+        fields: ["name", "geometry"],
+      };
+
+      
+      service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
+
       return (localLat, localLon)
+
+      function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+      
+      function createMarker(place) {
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location,
+        });
+        google.maps.event.addListener(marker, "click", () => {
+          infowindow.setContent(place.name);
+          infowindow.open(map);
+        });
+      }
+      
+        initMap();
     })
   }
+
   getApi(requestUrl);
 
-  let lat = [];
-  console.log(lat);
-  console.log(typeof(lat))
-  let lon = [];
-  console.log(lon);
-
+  //let lat = [];
+ // console.log("lat", lat);
+  // let lon = [];
+  // console.log("lon", lon);
   // Connect to Places API
+
 let map;
 let service;
 let infowindow;
@@ -108,57 +154,57 @@ function initMap() {
   // }
   // console.log(coordinates)
 
-  let intLat = parseFloat(lat)
-  console.log(intLat)
-  console.log(typeof(intLat))
+  // let intLat = parseFloat(lat)
 
-  let intLon = parseFloat(lon)
-  console.log(intLon)
-  console.log(typeof(intLon))
+  // console.log("long:",lon[0])
+  // console.log("lat:",lat[0])
+  // let intLon = parseInt(lon)
+  // console.log(intLon)
+  // console.log(typeof(intLon))
 
-  var userLocation = new google.maps.LatLng({lat: 37.7749, lng: -122.4194})
+  // var userLocation = new google.maps.LatLng({lat: intLat, lng: intLon})  //37.7749 -122.4194
   // google.maps.LatLng(coordinates)
-  console.log(userLocation.lat())
-  console.log(userLocation.lng())
-  console.log(typeof(userLocation))
+  // console.log(userLocation.lat())
+  // console.log(userLocation.lng())
+  // console.log(typeof(userLocation))
 
-  infowindow = new google.maps.InfoWindow();
+  // infowindow = new google.maps.InfoWindow();
 
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: userLocation,
-    zoom: 13,
-  });
+  // map = new google.maps.Map(document.getElementById("map"), {
+  //   center: userLocation,
+  //   zoom: 13,
+  // });
 
-  const request = {
-    location: userLocation,
-    radius: '5000',
-    name: googleName,
-    fields: ["name", "geometry"],
-  };
+  // const request = {
+  //   location: {lat: intLat, lng: intLon},
+  //   radius: '5000',
+  //   name: googleName,
+  //   fields: ["name", "geometry"],
+  // };
   
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
+  // service = new google.maps.places.PlacesService(map);
+  // service.nearbySearch(request, callback);
 }
 
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
+// function callback(results, status) {
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       createMarker(results[i]);
+//     }
+//   }
+// }
 
-function createMarker(place) {
-  const marker = new google.maps.Marker({
-    map,
-    position: place.geometry.location,
-  });
-  google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name);
-    infowindow.open(map);
-  });
-}
+// function createMarker(place) {
+//   const marker = new google.maps.Marker({
+//     map,
+//     position: place.geometry.location,
+//   });
+//   google.maps.event.addListener(marker, "click", () => {
+//     infowindow.setContent(place.name);
+//     infowindow.open(map);
+//   });
+// }
 
-  initMap();
+//   initMap();
   
 }
