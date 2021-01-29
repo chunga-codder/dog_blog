@@ -1,3 +1,7 @@
+body {
+  background: url("/pictures/paws.png");
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
@@ -15,6 +19,13 @@ form.login {
 .card {
   opacity: 0.8;
   font-weight: bold;
+  margin-right: 1rem;
+  margin-bottom: 20px;
+}
+
+h1,
+h2 {
+  font-family: "Architects Daughter", cursive;
 }
 
 .btn.btn-primary {
@@ -50,10 +61,6 @@ form.login {
   margin-top: 15px;
 }
 
-.card {
-  margin-top: 1rem;
-}
-
 #general-btn {
   margin-right: 1rem;
 }
@@ -64,4 +71,8 @@ form.login {
 
 .edit {
   margin-right: 1rem;
+}
+
+footer {
+  margin-top: 40px;
 }
