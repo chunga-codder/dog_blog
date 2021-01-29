@@ -13,6 +13,7 @@ html
       script(src="https://polyfill.io/v3/polyfill.min.js?features=default")
       script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3HjiS9yqJoirke_iTfk6hAOMScU3P6wE&callback=initMap&libraries=&v=weekly", defer)
       script(defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UWO33w4NOd-Gb3m1WGg8N3Tfp0-5C0w&libraries=places&callback=initMap")
+      //- script(src='https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAKe_ZW4SBBlRchQCJD_fzo23X_TmA1Rvg')
   
   body
 
@@ -68,7 +69,7 @@ html
     .container#parks-section
       .container
         .input-group.mb-3
-          input.form-control(type='text' placeholder='ZIP code' aria-label="Recipient's username" aria-describedby='button-addon2')
+          input#zip-input.form-control(type='text' placeholder='ZIP code' aria-label="Recipient's username" aria-describedby='button-addon2')
           button#find-parks-btn.button-addon2.btn.btn-outline-primary(type='button')
             | Find Parks
           button#find-stores-btn.button-addon2.btn.btn-outline-primary(type='button')
